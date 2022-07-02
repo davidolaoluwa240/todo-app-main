@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/js-toastr@1.1.1/toast.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css" />
+    <title>Frontend Mentor - Todo app</title>
+  </head>
+  <body data-theme="light">
+    <div class="todo">
+      <header class="todo__header">
+        <div class="todo__info container">
+          <h1 class="todo__info-heading">TODO</h1>
+          <img
+            class="todo__info-icon is-cursor-pointer"
+            src="./assets/images/icon-moon.svg"
+            alt="switch to dark mode"
+          />
+        </div>
+        <div class="todo-box-wrapper todo-box-wrapper--rounded-all container">
+          <div class="todo-box add-todo-box">
+            <div class="todo-box__left">
+              <input
+                class="todo-box__checkbox-control d-none"
+                type="checkbox"
+                id="check-todo"
+              />
+              <label
+                class="todo-box__checkbox-label add-todo-box__checkbox-label"
+                for="check-todo"
+                title="add todo"
+              >
+              </label>
+            </div>
+            <div class="todo-box__middle is-cursor-default">
+              <form class="add-todo-box__form">
+                <input
+                  class="add-todo-box__control"
+                  type="text"
+                  autofocus
+                  autocomplete="off"
+                  placeholder="Create a new todo..."
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="todo__main container">
+        <div class="todo__empty-box d-none">
+          <p class="todo__empty-text">You do not have any existing todo.</p>
+        </div>
+
+        <!-- Todos is mounted to the below element with javascript -->
+        <div class="todo-root"></div>
+
+        <div class="todo-box-wrapper todo-box-wrapper--rounded-bottom">
+          <div class="todo-box todo-action-box">
+            <div class="todo-box__left">
+              <p class="todo-action-box__uncompleted">0 items left</p>
+            </div>
+            <div class="todo-box__middle todo-box__middle--center">
+              <span
+                class="todo-action-box__state todo-action-box__state--active"
+                data-todo-state="all"
+                >All</span
+              ><span class="todo-action-box__state" data-todo-state="active"
+                >Active</span
+              ><span class="todo-action-box__state" data-todo-state="completed"
+                >Completed</span
+              >
+            </div>
+            <div class="todo-box__right">
+              <p class="todo-action-box__clear">Clear Completed</p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="todo__footer">
+        <p class="todo__footer-text">Drag and drop to reorder list</p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-toastr@1.1.1/toast.min.js"></script>
+    <script src="./assets/js/db/db.js"></script>
+    <script src="./assets/js/utils/util.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

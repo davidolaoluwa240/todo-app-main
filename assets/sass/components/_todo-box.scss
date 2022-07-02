@@ -1,0 +1,66 @@
+.todo-box {
+  @include flex-box();
+  cursor: pointer;
+
+  &__left {
+    @include flex-box($align-items: center);
+    padding: 1.8rem 2rem;
+  }
+
+  &__checkbox-icon {
+    display: none;
+  }
+
+  &__checkbox-label {
+    border: 1px solid getColor("grey-light-300");
+    width: 24px;
+    height: 24px;
+    border-radius: 9999px;
+    cursor: pointer;
+    @include flex-box(center, center);
+
+    &:hover {
+      border-color: linear-gradient(
+        to bottom right,
+        rgba(getColor("secondary-color"), 0.9) 20%,
+        rgba(getColor("tertiary-color"), 0.9)
+      );
+    }
+  }
+
+  &__checkbox-control:checked + &__checkbox-label &__checkbox-icon {
+    display: block;
+  }
+
+  &__checkbox-control:checked + &__checkbox-label {
+    background: linear-gradient(
+      to bottom right,
+      rgba(getColor("secondary-color"), 0.9) 20%,
+      rgba(getColor("tertiary-color"), 0.9)
+    );
+    border: none;
+  }
+
+  &__middle {
+    flex-grow: 8;
+    padding-right: 2rem;
+  }
+
+  &__middle--center {
+    @include flex-box($align-items: center);
+  }
+
+  &__right {
+    flex-grow: 1;
+    @include flex-box(flex-end, $align-items: center);
+    padding-right: 2rem;
+  }
+
+  &__delete-icon {
+    visibility: hidden;
+  }
+
+  &:hover &__delete-icon {
+    visibility: visible;
+  }
+}

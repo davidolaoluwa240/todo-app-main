@@ -1,0 +1,103 @@
+// COLOR
+@each $name, $value in $colors {
+  .is-text-#{$name} {
+    color: $value !important;
+  }
+}
+
+// BACKGROUND
+@each $name, $value in $colors {
+  .bg-#{$name} {
+    background-color: $value !important;
+  }
+}
+
+// WEIGHT
+@each $name, $value in $weights {
+  .is-text-#{$name} {
+    font-weight: $value !important;
+  }
+}
+
+// FONT SIZE
+@each $name, $value in $font-sizes {
+  .is-text-#{$name} {
+    font-size: $value !important;
+  }
+}
+
+// HEADING FONT SIZE
+@each $name, $value in $heading-font-sizes {
+  .is-#{$name} {
+    font-size: $value !important;
+  }
+}
+
+// TEXT ALIGNMENT
+.is-text-center {
+  text-align: center !important;
+}
+
+.is-text-right {
+  text-align: right !important;
+}
+
+.is-text-left {
+  text-align: left !important;
+}
+
+.is-text-justify {
+  text-align: justify !important;
+}
+
+// HIDE
+.d-none {
+  display: none !important;
+}
+
+.visibility-hidden {
+  visibility: hidden !important;
+}
+
+// SHOW
+.d-block {
+  display: block !important;
+}
+
+.visibility-visible {
+  visibility: visible !important;
+}
+
+// TEXT TRANSFORMER
+.is-upper {
+  text-transform: uppercase !important;
+}
+
+.is-lower {
+  text-transform: lowercase !important;
+}
+
+.is-capitalize {
+  text-transform: capitalize !important;
+}
+
+.is-text-italic {
+  font-style: italic !important;
+}
+
+// LAYOUT
+.container {
+  max-width: 590px;
+  height: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+// CURSOR
+.is-cursor-pointer {
+  cursor: pointer;
+}
+
+.is-cursor-default {
+  cursor: default;
+}

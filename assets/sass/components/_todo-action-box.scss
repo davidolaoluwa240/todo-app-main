@@ -1,0 +1,43 @@
+.todo-action-box {
+  & > .todo-box__left {
+    padding: 2.7rem 2rem;
+  }
+
+  & > .todo-box__middle--center {
+    justify-content: center;
+  }
+
+  &__uncompleted,
+  &__clear {
+    font-size: 1.4rem;
+    color: getColor("grey-dark-200");
+    transition: color 0.2s ease-out;
+  }
+
+  &__clear:hover {
+    color: rgba(getColor("grey-dark-200"), 0.7);
+  }
+
+  &__state {
+    color: getColor("grey-dark-200");
+    transition: color 0.2s ease-out;
+    font-weight: 700;
+    font-size: 1.6rem;
+
+    &:not(:last-of-type) {
+      margin-right: 3.6rem;
+    }
+
+    &:hover {
+      color: rgba(getColor("grey-dark-200"), 0.7);
+    }
+  }
+
+  &__state--active {
+    color: getColor("primary-color");
+
+    &:hover {
+      color: getColor("primary-color");
+    }
+  }
+}

@@ -1,0 +1,72 @@
+$colors: (
+  "primary-color": hsl(220, 98%, 61%),
+  "secondary-color": hsl(192, 100%, 67%),
+  "tertiary-color": hsl(280, 87%, 65%),
+  "grey-light-100": hsl(0, 0%, 98%),
+  "grey-light-200": hsl(236, 33%, 92%),
+  "grey-light-300": hsl(233, 11%, 84%),
+  "grey-dark-100": hsl(236, 9%, 61%),
+  "grey-dark-200": hsl(235, 19%, 35%),
+  "light": #ffffff,
+  "dark": #000000,
+);
+
+$weights: (
+  "thin": 300,
+  "default": 400,
+  "thick": 500,
+  "extra-thick": 600,
+  "bold": 700,
+  "extra-bold": 800,
+  "bolder": 900,
+);
+
+$font-sizes: (
+  "extra-small": 1.3rem,
+  "small": 1.4rem,
+  "medium": 1.6rem,
+  "extra-medium": 1.8rem,
+  "large": 2.2rem,
+  "extra-large": 2.4rem,
+);
+
+$font-family: (
+  "font-family-normal": (
+    "Josefin Sans",
+    sans-serif,
+  ),
+);
+
+$base-fonts: (
+  "font-size": 1.8rem,
+  "font-family":
+    map-get(
+      $map: $font-family,
+      $key: font-family-normal,
+    ),
+  "line-height": 1.2px,
+  "font-weight": 400,
+  "color":
+    map-get(
+      $map: $colors,
+      $key: dark,
+    ),
+);
+
+$heading-font-sizes: (
+  "heading-100": 4rem,
+  "heading-200": 5rem,
+  "heading-300": 6rem,
+  "heading-400": 7rem,
+  "heading-500": 8rem,
+  "heading-600": 9rem,
+);
+
+$button-sizes: (
+  "extra-small": 1rem 1rem,
+  "small": 2rem 2rem,
+  "medium": 3rem 3rem,
+  "extra-medium": 4rem 4rem,
+  "large": 5rem 5rem,
+  "extra-large": 6rem 6rem,
+);

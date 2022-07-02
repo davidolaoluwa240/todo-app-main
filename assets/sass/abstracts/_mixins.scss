@@ -1,0 +1,64 @@
+// FLEXBOX
+@mixin flex-box(
+  $justify-content: flex-start,
+  $align-items: stretch,
+  $flex-direction: row,
+  $flex-wrap: nowrap
+) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+}
+
+// ABSOLUTE CENTERING
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// MEDIA QUERY MANAGER
+/*
+Page Configured for Desktop First Design
+
+General Breakpoint:
+0-600px:    Phone
+600-900px:  Tab-port
+900-1200px: Tab-land
+1800px +: Big-desktop
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em => 16px
+*/
+
+@mixin respond($breakpoint) {
+  @if ($breakpoint == phone) {
+    // 600px
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  } @else if ($breakpoint == tab-port) {
+    // 900px
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  } @else if($breakpoint == tab-land) {
+    // 1200px
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  } @else if($breakpoint == big-desktop) {
+    // 1800px
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+}

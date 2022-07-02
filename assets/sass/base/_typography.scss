@@ -1,0 +1,8 @@
+body {
+  font-size: getBaseFont("font-size");
+  font-family: getBaseFont("font-family");
+  font-weight: getBaseFont("font-weight");
+  line-height: getBaseFont("line-height");
+  color: getBaseFont("color");
+  min-height: 100vh;
+}
