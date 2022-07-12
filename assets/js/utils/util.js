@@ -4,7 +4,7 @@ const toastMessage = function (msg, state) {
 
 const createHTML = function ({ id, title, completed }) {
   return `
-      <div class="todo-box-wrapper todo-box-wrapper--rounded-top">
+      <div class="todo-box-wrapper todo-box-wrapper--rounded-top" draggable="true" ondragstart="onDragStart(event, ${id})" ondragover="onDragOver(event)" ondragenter="onDragEnter(event, ${id})" ondrop="onDrop(event)">
           <div class="todo-box todo-list-box" data-todo-id=${id}>
             <div class="todo-box__left">
               <input

@@ -46,6 +46,38 @@ const updateTodo = (todoId) => {
   saveTodos(todos);
 };
 
+const swapTodo = (fromId, toId) => {
+  if (fromId !== toId) {
+    // Load Todos
+    let todos = loadTodos();
+
+    // From Object
+    const { title: fromTitle, completed: fromCompleted } = todos.find(
+      (todo) => todo.id === fromId
+    );
+
+    // To Object
+    const { title: toTitle, completed: toCompleted } = todos.find(
+      (todo) => todo.id === toId
+    );
+
+    // Update the todos array
+    todos = todos.map((todo) => {
+      switch (todo.id) {
+        case fromId:
+          return { ...todo, title: toTitle, completed: toCompleted };
+        case toId:
+          return { ...todo, title: fromTitle, completed: fromCompleted };
+        default:
+          return todo;
+      }
+    });
+
+    // Save Todos
+    saveTodos(todos);
+  }
+};
+
 const deleteTodo = (todoId) => {
   // Load Todos
   const todos = loadTodos();
@@ -91,4 +123,5 @@ const todoDB = {
   filterTodo,
   loadTodos,
   clearCompletedTodos,
+  swapTodo,
 };

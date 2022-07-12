@@ -21,6 +21,8 @@ const todoRootElem = $(".todo-root");
 // Internal State
 let todos = [];
 let filterBy = "all";
+let draggedElemId = null;
+let draggedElemTargetId = null;
 
 const updateTodoActiveTextInfo = function () {
   const activeTodosLength = todoDB.getTodos("active").length;
@@ -59,9 +61,9 @@ const render = function (todos, filterBy) {
 
   // Update the dom
   todoRootElem.innerHTML = "";
-  todos.forEach((todo) =>
-    todoRootElem.insertAdjacentHTML("afterBegin", createHTML(todo))
-  );
+  todos.forEach((todo) => {
+    todoRootElem.insertAdjacentHTML("afterBegin", createHTML(todo));
+  });
 
   // Update the uncompleted todo info text
   updateTodoActiveTextInfo();
@@ -158,6 +160,46 @@ const onToggleTodoState = function (e) {
 const onClearCompletedTodos = function () {
   // Clear completed todos
   todoDB.clearCompletedTodos();
+
+  // Filter todos
+  todos = todoDB.getTodos(filterBy);
+
+  // Update the dom
+  render(todos, filterBy);
+};
+
+const onDragStart = function (e, id) {
+  // Update the draggedElem value
+  draggedElemId = id;
+
+  // Add the dragged modifier class on the dragged todo item
+  e.target.classList.add("todo-box-wrapper--dragged");
+};
+
+const onDragOver = function (e) {
+  // Prevent Element Default Handling
+  e.preventDefault();
+};
+
+const onDragEnter = function (e, id) {
+  // Prevent Element Default Handling
+  e.preventDefault();
+
+  // Update the draggedElemTarget value
+  draggedElemTargetId = id;
+};
+
+const onDrop = function (e) {
+  // Prevent Element Default Handling
+  e.preventDefault();
+
+  // Remove the dragged modifier class on the dragged todo item
+  $(`[data-todo-id='${draggedElemId}']`).parentNode.classList.remove(
+    "todo-box-wrapper--dragged"
+  );
+
+  // Swap the specified drag Item with the target
+  todoDB.swapTodo(draggedElemId, draggedElemTargetId);
 
   // Filter todos
   todos = todoDB.getTodos(filterBy);

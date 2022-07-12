@@ -1,6 +1,7 @@
 .todo-box-wrapper {
   height: auto !important;
   background: getColor("grey-light-100");
+  color: #424242;
 
   &--rounded-all {
     border-radius: 6px;
@@ -13,5 +14,14 @@
 
   &--rounded-bottom {
     border-radius: 0px 0px 6px 6px;
+  }
+
+  &--dragged {
+    background-color: getColor("grey-dark-200");
+    color: getColor("light");
+  }
+
+  &--drag-target {
+    margin-top: 4rem;
   }
 }

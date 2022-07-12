@@ -277,9 +277,6 @@ body {
     .add-todo-box__control::placeholder {
       font-size: 1.6rem; }
 
-.todo-list-box__text {
-  color: #424242; }
-
 .todo-list-box__text-checked {
   text-decoration: line-through;
   opacity: 0.6; }
@@ -315,7 +312,8 @@ body {
 
 .todo-box-wrapper {
   height: auto !important;
-  background: #fafafa; }
+  background: #fafafa;
+  color: #424242; }
   .todo-box-wrapper--rounded-all {
     border-radius: 6px; }
   .todo-box-wrapper--rounded-top {
@@ -323,6 +321,11 @@ body {
     border-bottom: 1px solid #e4e5f1; }
   .todo-box-wrapper--rounded-bottom {
     border-radius: 0px 0px 6px 6px; }
+  .todo-box-wrapper--dragged {
+    background-color: #484b6a;
+    color: #ffffff; }
+  .todo-box-wrapper--drag-target {
+    margin-top: 4rem; }
 
 .todo {
   min-height: 100vh;
