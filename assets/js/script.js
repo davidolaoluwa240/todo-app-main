@@ -19,10 +19,11 @@ let draggedElemId = null;
 let draggedElemTargetId = null;
 
 const updateTodoActiveTextInfo = function () {
-  const activeTodosLength = todoDB.getTodos("active").length;
-  todoActionUncompletedTextElem.textContent = `${activeTodosLength} ${
+  const activeTodosLength = DB.getTodos("active").length;
+  const text = `${activeTodosLength} ${
     activeTodosLength === 1 ? "item" : "items"
   } left`;
+  todoActionUncompletedTextElem.textContent = text;
 };
 
 const showNoTodosMessageBox = function (filterBy) {
@@ -69,17 +70,17 @@ const onAddTodo = function (e) {
   // Get value in the add todo input
   const todoTitle = addTodoInputElem.value;
 
-  //When todoValue is empty toast error message
+  // When todoValue is empty toast error message
   if (!todoTitle) {
     toastMessage("Add todo text ⛔", "error");
     return;
   }
 
   // add to todo list
-  todoDB.addTodo(todoTitle);
+  DB.addTodo(todoTitle);
 
   // Filter todos
-  todos = todoDB.getTodos(filterBy);
+  todos = DB.getTodos(filterBy);
 
   // Update the dom
   render(todos, filterBy);
@@ -91,21 +92,16 @@ const onAddTodo = function (e) {
 const onTodoCompleted = function (e) {
   const targetElem = e.target;
   const todoBox = targetElem.closest("[data-todo-id]");
-  const excludeClasses = ["todo-box__right", "todo-box__delete-icon"];
+  const excludeElem = targetElem.closest(".todo-box__right");
 
-  if (
-    todoBox &&
-    ![...targetElem.classList].some((nodeClass) =>
-      excludeClasses.includes(nodeClass)
-    )
-  ) {
+  if (todoBox && !excludeElem) {
     const id = Number(todoBox.dataset.todoId);
 
     // update the specified todo state
-    todoDB.updateTodo(id);
+    DB.updateTodo(id);
 
     // Filter todos
-    todos = todoDB.getTodos(filterBy);
+    todos = DB.getTodos(filterBy);
 
     // Update the dom
     render(todos, filterBy);
@@ -115,15 +111,16 @@ const onTodoCompleted = function (e) {
 const onDeleteTodo = function (e) {
   const targetElem = e.target;
   const todoBox = targetElem.closest(".todo-box");
+  const todoDeleteIcon = targetElem.closest(".todo-list-box__delete-icon");
 
-  if (targetElem.classList.contains("todo-box__delete-icon") && todoBox) {
+  if (todoDeleteIcon && todoBox) {
     const id = Number(todoBox.dataset.todoId);
 
     // delete the specified todo value
-    todoDB.deleteTodo(id);
+    DB.deleteTodo(id);
 
     // Filter todos
-    todos = todoDB.getTodos(filterBy);
+    todos = DB.getTodos(filterBy);
 
     // Update the dom
     render(todos, filterBy);
@@ -145,7 +142,7 @@ const onToggleTodoState = function (e) {
   filterBy = selectedState;
 
   // Filter todos
-  todos = todoDB.getTodos(filterBy);
+  todos = DB.getTodos(filterBy);
 
   // Update the dom
   render(todos, filterBy);
@@ -153,10 +150,10 @@ const onToggleTodoState = function (e) {
 
 const onClearCompletedTodos = function () {
   // Clear completed todos
-  todoDB.clearCompletedTodos();
+  DB.clearCompletedTodos();
 
   // Filter todos
-  todos = todoDB.getTodos(filterBy);
+  todos = DB.getTodos(filterBy);
 
   // Update the dom
   render(todos, filterBy);
@@ -193,10 +190,10 @@ const onDrop = function (e) {
   );
 
   // Swap the specified drag Item with the target
-  todoDB.swapTodo(draggedElemId, draggedElemTargetId);
+  // todoDB.swapTodo(draggedElemId, draggedElemTargetId);
 
   // Filter todos
-  todos = todoDB.getTodos(filterBy);
+  // todos = todoDB.getTodos(filterBy);
 
   // Update the dom
   render(todos, filterBy);
@@ -204,7 +201,7 @@ const onDrop = function (e) {
 
 (function () {
   // Get the todos
-  todos = todoDB.getTodos(filterBy);
+  todos = DB.getTodos(filterBy);
 
   // Render todos on page load
   render(todos, filterBy);

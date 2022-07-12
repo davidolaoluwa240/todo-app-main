@@ -29,7 +29,7 @@
       opacity: 0.7;
     }
 
-    &__delete-icon {
+    &__delete-icon > path {
       fill: getColor("grey-light-300");
     }
   }
