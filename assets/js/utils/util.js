@@ -2,6 +2,12 @@ const toastMessage = function (msg, state) {
   toastr.message(msg, state, 3500);
 };
 
+const $ = function (selector, shouldSelectAll) {
+  return shouldSelectAll
+    ? document.querySelectorAll(selector)
+    : document.querySelector(selector);
+};
+
 const createHTML = function ({ id, title, completed }) {
   return `
       <div class="todo-box-wrapper todo-box-wrapper--rounded-top" draggable="true" ondragstart="onDragStart(event, ${id})" ondragover="onDragOver(event)" ondragenter="onDragEnter(event, ${id})" ondrop="onDrop(event)">

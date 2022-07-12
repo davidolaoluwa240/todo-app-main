@@ -1,11 +1,5 @@
 "use strict";
 
-const $ = function (selector, shouldSelectAll) {
-  return shouldSelectAll
-    ? document.querySelectorAll(selector)
-    : document.querySelector(selector);
-};
-
 // Selecting Elements
 const emptyBoxElem = $(".todo__empty-box");
 const emptyMessageElem = $(".todo__empty-text");
