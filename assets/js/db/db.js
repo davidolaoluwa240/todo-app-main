@@ -11,6 +11,11 @@ const saveTodos = function (todos) {
   }
 };
 
+const updateUserTheme = function (theme) {
+  // Save the user theme value to the localstorage
+  localStorage.setItem("theme", theme);
+};
+
 const getTodos = (filterBy) => {
   // Load Todos
   const todos = loadTodos();
@@ -115,7 +120,7 @@ const clearCompletedTodos = () => {
   saveTodos(newTodos);
 };
 
-const todoDB = {
+const DB = {
   getTodos,
   addTodo,
   updateTodo,
@@ -124,4 +129,5 @@ const todoDB = {
   loadTodos,
   clearCompletedTodos,
   swapTodo,
+  updateUserTheme,
 };
