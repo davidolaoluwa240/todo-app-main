@@ -19,20 +19,6 @@
   }
 }
 
-// FONT SIZE
-@each $name, $value in $font-sizes {
-  .is-text-#{$name} {
-    font-size: $value !important;
-  }
-}
-
-// HEADING FONT SIZE
-@each $name, $value in $heading-font-sizes {
-  .is-#{$name} {
-    font-size: $value !important;
-  }
-}
-
 // TEXT ALIGNMENT
 .is-text-center {
   text-align: center !important;
@@ -40,14 +26,6 @@
 
 .is-text-right {
   text-align: right !important;
-}
-
-.is-text-left {
-  text-align: left !important;
-}
-
-.is-text-justify {
-  text-align: justify !important;
 }
 
 // HIDE
@@ -91,6 +69,10 @@
   height: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
+
+  @include respond(phone) {
+    max-width: 96%;
+  }
 }
 
 // CURSOR

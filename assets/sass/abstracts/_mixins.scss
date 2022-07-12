@@ -20,6 +20,13 @@
   transform: translate(-50%, -50%);
 }
 
+// THEMING
+@mixin theme($theme: light) {
+  [data-theme="#{$theme}"] {
+    @content;
+  }
+}
+
 // MEDIA QUERY MANAGER
 /*
 Page Configured for Desktop First Design

@@ -14,11 +14,13 @@ const createHTML = function ({ id, title, completed }) {
                 ${completed ? "checked" : ""}
               />
               <label class="todo-box__checkbox-label" for="check-todo-${id}">
-                <img
-                  class="todo-box__checkbox-icon"
-                  src="./assets/images/icon-check.svg"
-                  alt="check"
-                />
+                <span class="todo-box__checkbox-background-cover">
+                  <img
+                    class="todo-box__checkbox-icon"
+                    src="./assets/images/icon-check.svg"
+                    alt="check"
+                  />
+                </span>
               </label>
             </div>
             <div class="todo-box__middle todo-box__middle--center">
@@ -27,13 +29,11 @@ const createHTML = function ({ id, title, completed }) {
               }">${title}</p>
             </div>
             <div class="todo-box__right">
-              <img
-                class="todo-box__delete-icon"
-                src="./assets/images/icon-cross.svg"
-                alt="delete todo"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+            <path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"  class="todo-list-box__delete-icon"/>
+            </svg>
             </div>
           </div>
       </div>
-    `;
+      `;
 };

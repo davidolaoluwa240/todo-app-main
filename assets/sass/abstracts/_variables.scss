@@ -5,10 +5,17 @@ $colors: (
   "grey-light-100": hsl(0, 0%, 98%),
   "grey-light-200": hsl(236, 33%, 92%),
   "grey-light-300": hsl(233, 11%, 84%),
-  "grey-dark-100": hsl(236, 9%, 61%),
-  "grey-dark-200": hsl(235, 19%, 35%),
-  "light": #ffffff,
-  "dark": #000000,
+  "grey-light-400": hsl(234, 39%, 85%),
+  "grey-dark-100": hsl(0, 0%, 26%),
+  "grey-dark-200": hsl(235, 21%, 11%),
+  "accent-100": hsl(237, 9%, 61%),
+  "accent-200": hsl(234, 11%, 52%),
+  "accent-300": hsl(235, 19%, 35%),
+  "accent-400": hsl(233, 14%, 35%),
+  "accent-500": hsl(237, 14%, 26%),
+  "accent-600": hsl(235, 24%, 19%),
+  "light": hsl(0, 0%, 100%),
+  "dark": hsl(0, 0%, 0%),
 );
 
 $weights: (
@@ -44,29 +51,11 @@ $base-fonts: (
       $map: $font-family,
       $key: font-family-normal,
     ),
-  "line-height": 1.2px,
+  "line-height": 100%,
   "font-weight": 400,
   "color":
     map-get(
       $map: $colors,
       $key: dark,
     ),
-);
-
-$heading-font-sizes: (
-  "heading-100": 4rem,
-  "heading-200": 5rem,
-  "heading-300": 6rem,
-  "heading-400": 7rem,
-  "heading-500": 8rem,
-  "heading-600": 9rem,
-);
-
-$button-sizes: (
-  "extra-small": 1rem 1rem,
-  "small": 2rem 2rem,
-  "medium": 3rem 3rem,
-  "extra-medium": 4rem 4rem,
-  "large": 5rem 5rem,
-  "extra-large": 6rem 6rem,
 );

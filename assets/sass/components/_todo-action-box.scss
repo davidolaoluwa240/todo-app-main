@@ -10,16 +10,16 @@
   &__uncompleted,
   &__clear {
     font-size: 1.4rem;
-    color: getColor("grey-dark-200");
+    color: getColor("accent-300");
     transition: color 0.2s ease-out;
   }
 
   &__clear:hover {
-    color: rgba(getColor("grey-dark-200"), 0.7);
+    color: rgba(getColor("accent-300"), 0.7);
   }
 
   &__state {
-    color: getColor("grey-dark-200");
+    color: getColor("accent-300");
     transition: color 0.2s ease-out;
     font-weight: 700;
     font-size: 1.6rem;
@@ -29,15 +29,64 @@
     }
 
     &:hover {
-      color: rgba(getColor("grey-dark-200"), 0.7);
+      color: rgba(getColor("accent-300"), 0.7);
     }
   }
 
   &__state--active {
-    color: getColor("primary-color");
+    color: getColor("primary-color") !important;
 
     &:hover {
-      color: getColor("primary-color");
+      color: getColor("primary-color") !important;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    &__state:not(:last-of-type) {
+      margin-right: 1.6rem;
+    }
+  }
+
+  @media screen and (max-width: 366px) {
+    flex-wrap: wrap;
+
+    & > .todo-box__middle {
+      order: -1;
+      width: 100%;
+      padding: 3rem 2rem;
+    }
+
+    &__state:not(:last-of-type) {
+      margin-right: 3.6rem;
+    }
+  }
+}
+
+// Theming below
+@include theme(dark) {
+  .todo-action-box {
+    &__uncompleted,
+    &__clear {
+      color: getColor("grey-light-300");
+    }
+
+    &__clear:hover {
+      color: rgba(getColor("grey-light-300"), 0.7);
+    }
+
+    &__state {
+      color: getColor("accent-200");
+      transition: color 0.2s ease-out;
+      font-weight: 700;
+      font-size: 1.6rem;
+
+      &:not(:last-of-type) {
+        margin-right: 3.6rem;
+      }
+
+      &:hover {
+        color: rgba(getColor("light"), 0.9);
+      }
     }
   }
 }

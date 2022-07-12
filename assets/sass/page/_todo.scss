@@ -1,11 +1,10 @@
 .todo {
-  min-height: 100vh;
-  width: 100vw;
+  padding-bottom: 6rem;
 
   &__header {
     height: 310px;
-    background-image: url("../images/bg-desktop-light.jpg");
     background-repeat: no-repeat;
+    background-image: url("../images/bg-desktop-light.jpg");
     background-size: cover;
     background-position: center center;
   }
@@ -20,6 +19,10 @@
     color: getColor("grey-light-100");
     font-weight: 700;
     letter-spacing: 10px;
+  }
+
+  &__info-icon--light {
+    display: none;
   }
 
   &__main {
@@ -37,7 +40,7 @@
 
   &__footer-text {
     text-align: center;
-    color: rgba(getColor("grey-dark-100"), 0.8);
+    color: rgba(getColor("accent-100"), 0.8);
   }
 
   &__empty-box {
@@ -47,6 +50,38 @@
   }
 
   &__empty-text {
-    color: getColor("grey-dark-200");
+    color: getColor("accent-300");
+  }
+}
+
+// THEMING BELOW
+@include theme(dark) {
+  .todo {
+    &__header {
+      background-image: url("../images/bg-desktop-dark.jpg");
+    }
+
+    &__main {
+      background: getColor("accent-600");
+      box-shadow: getColor("grey-dark-200") 1px 8px 10px 0px;
+    }
+
+    &__info-icon--light {
+      display: block;
+    }
+
+    &__info-icon--dark {
+      display: none;
+    }
+
+    &__empty-box {
+      border-color: getColor("accent-400");
+    }
+
+    &__footer-text,
+    &__empty-text {
+      text-align: center;
+      color: getColor("grey-light-300");
+    }
   }
 }

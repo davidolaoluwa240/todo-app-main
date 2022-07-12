@@ -3,11 +3,6 @@
   @return map-get($map: $colors, $key: $color-name);
 }
 
-// GET WEIGHT
-@function getWeight($weight-name) {
-  @return map-get($map: $weights, $key: $weight-name);
-}
-
 // GET FONT FAMILY
 @function getFontFamily($font-family-name) {
   @return map-get($map: $font-family, $key: $font-family-name);
@@ -16,19 +11,4 @@
 // GET BASE FONTS
 @function getBaseFont($name) {
   @return map-get($map: $base-fonts, $key: $name);
-}
-
-// GET FONT SIZES
-@function getFontSize($font-size) {
-  @return map-get($map: $font-sizes, $key: $font-size);
-}
-
-// GET HEADING FONT SIZES
-@function getHeadingFontSize($heading-font-size) {
-  @return map-get($map: $heading-font-sizes, $key: $heading-font-size);
-}
-
-// GET BUTTON SIZES
-@function getButtonSize($button-size) {
-  @return map-get($map: $button-sizes, $key: $button-size);
 }

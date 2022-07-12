@@ -1,15 +1,12 @@
 .add-todo-box {
   margin-top: 5rem;
 
-  &__checkbox-label {
-    &:hover {
-      background: linear-gradient(
-        to bottom right,
-        rgba(getColor("secondary-color"), 0.9) 20%,
-        rgba(getColor("tertiary-color"), 0.9)
-      );
-      border: none;
-    }
+  &__checkbox-label:hover &__checkbox-background-cover {
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(getColor("secondary-color"), 0.9) 20%,
+      rgba(getColor("tertiary-color"), 0.9)
+    );
   }
 
   &__form {
@@ -21,7 +18,7 @@
     height: 100%;
     width: 100%;
     display: block;
-    color: getColor("grey-dark-200");
+    color: getColor("accent-300");
     font-family: inherit;
     font-size: 1.8rem;
     border: none;
@@ -32,6 +29,16 @@
 
     &::placeholder {
       font-size: 1.6rem;
+    }
+  }
+}
+
+// Theming below
+@include theme(dark) {
+  .add-todo-box {
+    &__control {
+      background: getColor("accent-600");
+      color: getColor("grey-light-300");
     }
   }
 }

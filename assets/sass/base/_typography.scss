@@ -6,3 +6,10 @@ body {
   color: getBaseFont("color");
   min-height: 100vh;
 }
+
+// THEMING BELOW
+@include theme(dark) {
+  body {
+    background: getColor("grey-dark-200");
+  }
+}

@@ -9,4 +9,8 @@
 html {
   font-size: 62.5%; // 10/16 => 62.5%
   box-sizing: border-box;
+
+  @include respond(phone) {
+    font-size: 50%;
+  }
 }

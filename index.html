@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,30 +19,32 @@
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css" />
     <title>Frontend Mentor - Todo app</title>
   </head>
-  <body data-theme="light">
+  <body>
     <div class="todo">
       <header class="todo__header">
         <div class="todo__info container">
           <h1 class="todo__info-heading">TODO</h1>
           <img
-            class="todo__info-icon is-cursor-pointer"
+            class="todo__info-icon todo__info-icon--dark is-cursor-pointer"
             src="./assets/images/icon-moon.svg"
             alt="switch to dark mode"
+          />
+          <img
+            class="todo__info-icon todo__info-icon--light is-cursor-pointer"
+            src="./assets/images/icon-sun.svg"
+            alt="switch to light mode"
           />
         </div>
         <div class="todo-box-wrapper todo-box-wrapper--rounded-all container">
           <div class="todo-box add-todo-box">
             <div class="todo-box__left">
-              <input
-                class="todo-box__checkbox-control d-none"
-                type="checkbox"
-                id="check-todo"
-              />
               <label
                 class="todo-box__checkbox-label add-todo-box__checkbox-label"
-                for="check-todo"
                 title="add todo"
               >
+                <span
+                  class="todo-box__checkbox-background-cover add-todo-box__checkbox-background-cover"
+                ></span>
               </label>
             </div>
             <div class="todo-box__middle is-cursor-default">
