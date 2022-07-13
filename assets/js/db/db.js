@@ -16,6 +16,18 @@ const updateUserTheme = function (theme) {
   localStorage.setItem("theme", theme);
 };
 
+const getMaxId = function (todos) {
+  if (todos.length) {
+    // Returns the maximum id number in the todos array
+    return todos.reduce(
+      (max, curr) => (curr.id > max ? curr.id : max),
+      todos[0].id
+    );
+  }
+
+  return 0;
+};
+
 const getTodos = (filterBy) => {
   // Load Todos
   const todos = loadTodos();
@@ -31,8 +43,8 @@ const addTodo = (title) => {
   const todos = loadTodos();
 
   // Create a new todo
-  const id = todos.length ? todos[todos.length - 1].id + 1 : 1;
-  const newTodo = { id, title, completed: false };
+  const maxId = getMaxId(todos);
+  const newTodo = { id: maxId + 1, title, completed: false };
   todos.push(newTodo);
 
   // Save Todos
@@ -57,22 +69,18 @@ const swapTodo = (fromId, toId) => {
     let todos = loadTodos();
 
     // From Object
-    const { title: fromTitle, completed: fromCompleted } = todos.find(
-      (todo) => todo.id === fromId
-    );
+    const fromObjTemp = todos.find((todo) => todo.id === fromId);
 
     // To Object
-    const { title: toTitle, completed: toCompleted } = todos.find(
-      (todo) => todo.id === toId
-    );
+    const toObjTemp = todos.find((todo) => todo.id === toId);
 
     // Update the todos array
     todos = todos.map((todo) => {
       switch (todo.id) {
-        case fromId:
-          return { ...todo, title: toTitle, completed: toCompleted };
         case toId:
-          return { ...todo, title: fromTitle, completed: fromCompleted };
+          return { ...fromObjTemp };
+        case fromId:
+          return { ...toObjTemp };
         default:
           return todo;
       }

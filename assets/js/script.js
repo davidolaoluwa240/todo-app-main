@@ -160,11 +160,11 @@ const onClearCompletedTodos = function () {
 };
 
 const onDragStart = function (e, id) {
-  // Update the draggedElem value
+  // Update the draggedElemId  value
   draggedElemId = id;
 
-  // Add the dragged modifier class on the dragged todo item
-  e.target.classList.add("todo-box-wrapper--dragged");
+  // Add a custom class to the dragged Element
+  e.target.classList.add("todo-box-wrapper--dragging");
 };
 
 const onDragOver = function (e) {
@@ -176,27 +176,27 @@ const onDragEnter = function (e, id) {
   // Prevent Element Default Handling
   e.preventDefault();
 
-  // Update the draggedElemTarget value
+  // Update the draggedElemTargetId value
   draggedElemTargetId = id;
+
+  // Swap the specified drag Item with the target
+  DB.swapTodo(draggedElemId, draggedElemTargetId);
+
+  // Filter todos
+  todos = DB.getTodos(filterBy);
+
+  // Update the dom
+  render(todos, filterBy);
 };
 
 const onDrop = function (e) {
   // Prevent Element Default Handling
   e.preventDefault();
 
-  // Remove the dragged modifier class on the dragged todo item
+  // Remove the dragging modifier class on the dragged todo item
   $(`[data-todo-id='${draggedElemId}']`).parentNode.classList.remove(
-    "todo-box-wrapper--dragged"
+    "todo-box-wrapper--dragging"
   );
-
-  // Swap the specified drag Item with the target
-  // todoDB.swapTodo(draggedElemId, draggedElemTargetId);
-
-  // Filter todos
-  // todos = todoDB.getTodos(filterBy);
-
-  // Update the dom
-  render(todos, filterBy);
 };
 
 (function () {

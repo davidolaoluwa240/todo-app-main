@@ -1,6 +1,5 @@
 .todo-box {
   @include flex-box();
-  cursor: pointer;
 
   &__left {
     @include flex-box($align-items: center);

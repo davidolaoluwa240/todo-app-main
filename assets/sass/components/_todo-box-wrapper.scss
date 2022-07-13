@@ -1,6 +1,6 @@
 .todo-box-wrapper {
   height: auto !important;
-  background: getColor("grey-light-100");
+  background-color: getColor("grey-light-100");
   color: getColor("grey-dark-100");
 
   &--rounded-all {
@@ -16,24 +16,30 @@
     border-radius: 0px 0px 6px 6px;
   }
 
-  // &--dragged {
-  //   background-color: getColor("accent-300");
-  //   color: getColor("light");
-  // }
+  &--draggable {
+    cursor: move;
+    user-select: none;
+  }
 
-  // &--drag-target {
-  //   margin-top: 4rem;
-  // }
+  &--dragging {
+    background-color: getColor("accent-600");
+    color: getColor("grey-light-300");
+  }
 }
 
 // Theming Below
 @include theme(dark) {
   .todo-box-wrapper {
-    background: getColor("accent-600");
+    background-color: getColor("accent-600");
     color: getColor("grey-light-300");
 
     &--rounded-top {
       border-color: getColor("accent-400");
+    }
+
+    &--dragging {
+      background-color: getColor("light");
+      color: getColor("grey-dark-100");
     }
   }
 }

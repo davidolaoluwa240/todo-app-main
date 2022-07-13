@@ -214,8 +214,7 @@ body {
   justify-content: flex-start;
   align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  cursor: pointer; }
+  flex-wrap: nowrap; }
   .todo-box__left {
     display: flex;
     justify-content: flex-start;
@@ -390,7 +389,7 @@ body {
 
 .todo-box-wrapper {
   height: auto !important;
-  background: #fafafa;
+  background-color: #fafafa;
   color: #424242; }
   .todo-box-wrapper--rounded-all {
     border-radius: 6px; }
@@ -399,12 +398,21 @@ body {
     border-bottom: 1px solid #e4e5f1; }
   .todo-box-wrapper--rounded-bottom {
     border-radius: 0px 0px 6px 6px; }
+  .todo-box-wrapper--draggable {
+    cursor: move;
+    user-select: none; }
+  .todo-box-wrapper--dragging {
+    background-color: #25273c;
+    color: #d2d3db; }
 
 [data-theme="dark"] .todo-box-wrapper {
-  background: #25273c;
+  background-color: #25273c;
   color: #d2d3db; }
   [data-theme="dark"] .todo-box-wrapper--rounded-top {
     border-color: #4d5066; }
+  [data-theme="dark"] .todo-box-wrapper--dragging {
+    background-color: white;
+    color: #424242; }
 
 .todo {
   padding-bottom: 6rem; }
