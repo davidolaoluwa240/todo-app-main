@@ -5,26 +5,29 @@ const switchThemeElem = $(".todo__info-icon", true);
 // Internal State
 let theme;
 
-const updateThemingAttribute = function (value) {
+const updateRootElemThemingAttribute = function (value) {
+  // Update the data-theme attribute on the root element
   rootElem.setAttribute("data-theme", value);
 };
 
 const toggleTheme = function () {
   // Toggle the theme variable value
   theme = theme === "light" ? "dark" : "light";
+
   // Update theme in the localstorage
   DB.updateUserTheme(theme);
+
   // Update the rootElem data-theme value
-  updateThemingAttribute(theme);
+  updateRootElemThemingAttribute(theme);
 };
 
 // Init
 (() => {
-  // Set theme value in load
+  // Set theme value onLoad
   theme = localStorage.getItem("theme") || "light";
 
-  // Invoke toggle theme
-  updateThemingAttribute(theme);
+  // Update theming value in the dom
+  updateRootElemThemingAttribute(theme);
 })();
 
 // Event Listener
