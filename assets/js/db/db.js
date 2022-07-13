@@ -25,6 +25,7 @@ const getMaxId = function (todos) {
     );
   }
 
+  // Return zero when the todos is empty
   return 0;
 };
 
@@ -119,15 +120,16 @@ const filterTodo = (todos, filterBy = "all") => {
 
 const clearCompletedTodos = () => {
   // Load Todos
-  const todos = loadTodos();
+  let todos = loadTodos();
 
   // Delete all todos that are completed
-  const newTodos = filterTodo(todos, "active");
+  todos = filterTodo(todos, "active");
 
   // Save Todos
-  saveTodos(newTodos);
+  saveTodos(todos);
 };
 
+// Todos Actions Object
 const DB = {
   getTodos,
   addTodo,
