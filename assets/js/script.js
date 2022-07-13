@@ -19,17 +19,25 @@ let draggedElemId = null;
 let draggedElemTargetId = null;
 
 const updateTodoActiveTextInfo = function () {
+  // Get active todos length
   const activeTodosLength = DB.getTodos("active").length;
+  // Create text with the activeTodosLength
   const text = `${activeTodosLength} ${
     activeTodosLength === 1 ? "item" : "items"
   } left`;
+  // Update the todo action uncompleted text elem
   todoActionUncompletedTextElem.textContent = text;
 };
 
 const showNoTodosMessageBox = function (filterBy) {
   if (filterBy) {
+    // Enable the emptyBoxElem
     emptyBoxElem.classList.remove("d-none");
+
+    // Create Message variable
     let msg;
+
+    // Update Message value based on the filterBy
     switch (filterBy) {
       case "active":
         msg = "You do not have any active todo.";
@@ -40,17 +48,21 @@ const showNoTodosMessageBox = function (filterBy) {
       default:
         msg = "You do not have any existing todo.";
     }
+
+    // Render Message to the dom
     emptyMessageElem.textContent = msg;
   } else {
+    // When there is no filterBy remove the emptyBoxElem from the dom
     emptyBoxElem.classList.add("d-none");
   }
 };
 
 const render = function (todos, filterBy) {
   if (!todos.length) {
-    // Show no todos box
+    // Show empty todos box
     showNoTodosMessageBox(filterBy);
   } else {
+    // Remove empty todos box
     showNoTodosMessageBox(null);
   }
 
@@ -79,7 +91,7 @@ const onAddTodo = function (e) {
   // add to todo list
   DB.addTodo(todoTitle);
 
-  // Filter todos
+  // Updated Filtered todos
   todos = DB.getTodos(filterBy);
 
   // Update the dom
@@ -91,16 +103,19 @@ const onAddTodo = function (e) {
 
 const onTodoCompleted = function (e) {
   const targetElem = e.target;
+  // Check whether the target have a closest element with the data-todo-id attribute
   const todoBox = targetElem.closest("[data-todo-id]");
+  // Check whether the target have a closest element with the todo-box__right class
   const excludeElem = targetElem.closest(".todo-box__right");
 
+  // When we have todoBox element and the exclude elem is null then mark the target todo has completed
   if (todoBox && !excludeElem) {
     const id = Number(todoBox.dataset.todoId);
 
     // update the specified todo state
     DB.updateTodo(id);
 
-    // Filter todos
+    // Updated Filtered todos
     todos = DB.getTodos(filterBy);
 
     // Update the dom
@@ -110,16 +125,19 @@ const onTodoCompleted = function (e) {
 
 const onDeleteTodo = function (e) {
   const targetElem = e.target;
+  // Check whether the target have a closest element with the todo-box class
   const todoBox = targetElem.closest(".todo-box");
+  // Check whether the target have a closest element with the todo-list-box__delete-icon class
   const todoDeleteIcon = targetElem.closest(".todo-list-box__delete-icon");
 
+  // When we have todoBox and todoDeleteIcon Element then delete the target todo
   if (todoDeleteIcon && todoBox) {
     const id = Number(todoBox.dataset.todoId);
 
     // delete the specified todo value
     DB.deleteTodo(id);
 
-    // Filter todos
+    // Updated Filtered todos
     todos = DB.getTodos(filterBy);
 
     // Update the dom
@@ -128,9 +146,10 @@ const onDeleteTodo = function (e) {
 };
 
 const onToggleTodoState = function (e) {
+  // Extract the selected state value
   const selectedState = e.target.dataset.todoState;
 
-  // Remove active class
+  // Remove active class on all the states
   todoActionStateElems.forEach((node) =>
     node.classList.remove("todo-action-box__state--active")
   );
@@ -141,7 +160,7 @@ const onToggleTodoState = function (e) {
   // set filterBy state
   filterBy = selectedState;
 
-  // Filter todos
+  // Updated Filtered todos
   todos = DB.getTodos(filterBy);
 
   // Update the dom
@@ -152,7 +171,7 @@ const onClearCompletedTodos = function () {
   // Clear completed todos
   DB.clearCompletedTodos();
 
-  // Filter todos
+  // Updated Filtered todos
   todos = DB.getTodos(filterBy);
 
   // Update the dom
@@ -182,7 +201,7 @@ const onDragEnter = function (e, id) {
   // Swap the specified drag Item with the target
   DB.swapTodo(draggedElemId, draggedElemTargetId);
 
-  // Filter todos
+  // Updated Filtered todos
   todos = DB.getTodos(filterBy);
 
   // Update the dom
